@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="guard.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamTV | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="streamtv.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img src="STREAMTV.webp" alt="StreamTV logo" height="32">
+                    <span>StreamTV</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="browse.html">Browse</a></li>
+                        <li class="nav-item"><a class="nav-link" href="mylist.html">My List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><button type="button" id="logoutBtn" class="btn btn-outline-warning ms-lg-2">Log out</button></li>
+                    </ul>
+                    <form class="d-flex ms-lg-3" role="search">
+                        <label for="search_input" class="visually-hidden">Search</label>
+                        <input class="form-control me-2" type="search" id="search_input" placeholder="Search">
+                        <button class="btn btn-warning" type="submit" aria-label="search">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                 <circle cx="11" cy="11" r="8"></circle>
+                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                             </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="Hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Tears of steel</h1>
+            <p>Sci-Fi/Action | 2012 | 12m</p>
+            <p>Set in a dystopian future, the short film features a group of warriors and scientists who gather at the Oude Kerk in Amsterdam in a desperate attempt to save the world from destructive robots.</p>
+            <div class="hero-buttons">
+                <a href="https://www.youtube.com/watch?v=R6MlUcmOul8" target="_blank" rel="noopener" class="btn btn-warning">Watch Trailer</a>
+                <button type="button" id="heroWatchBtn" class="btn btn-warning" data-id="6">▶ Watch Now</button>
+                <button type="button" id="heroListBtn" class="btn btn-outline-warning list-btn" data-id="6">+ My List</button>
+            </div>
+        </section>
+
+        <p id="Data_status" class="data-status" role="status" aria-live="polite"></p>
+
+        <section id="Trending">
+            <h2>Trending</h2>
+            <div id="Trending-row"></div>
+        </section>
+
+        <section id="New_releases">
+            <h2>New Releases</h2>
+            <div id="New_releases-row"></div>
+        </section>
+
+        <section id="Popular">
+            <h2>Popular</h2>
+            <div id="Popular-row"></div>
+        </section>
+
+        <div class="modal fade" id="playerModal" tabindex="-1" aria-labelledby="playerTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="playerTitle"></h2>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="playerFrame" title="Video player" src="" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <nav aria-label="Footer navigation">
+            <a href="about.html">About</a>
+            <a href="about.html#faq">Help</a>
+        </nav>
+        <p>&copy; 2026 StreamTV. A student project for Principles of Web Design. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="movies.js"></script>
+    <script src="data.js"></script>
+    <script src="list.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

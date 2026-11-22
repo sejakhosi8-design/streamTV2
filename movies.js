@@ -1,0 +1,62 @@
+/* BUILT-IN CATALOGUE (fallback copy of movies.json) */
+let movies = [
+  { id: 1, title: "Big Buck Bunny", genre: "Animation", year: 2008, duration: "10 min",
+    description: "A gentle giant rabbit gets revenge on three bullying rodents.",
+    poster: "big-buck-bunny.jpg", trailer: "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+    trending: true, popular: true },
+
+  { id: 2, title: "Sintel", genre: "Animation", year: 2010, duration: "15 min",
+    description: "A lone young woman searches the world for the baby dragon she lost.",
+    poster: "sintel.jpg", trailer: "https://www.youtube.com/watch?v=eRsGyueVLvQ",
+    trending: true, popular: true },
+
+  { id: 3, title: "Elephants Dream", genre: "Animation", year: 2006, duration: "11 min",
+    description: "Two strangers explore a strange machine world full of surprises.",
+    poster: "elephants-dream.jpg", trailer: "https://www.youtube.com/watch?v=TLkA0RELQ1g",
+    trending: false, popular: false },
+
+  { id: 4, title: "Cosmos Laundromat", genre: "Animation", year: 2015, duration: "12 min",
+    description: "A sheep on a lonely island is offered the chance to live many lives.",
+    poster: "cosmos-laundromat.jpg", trailer: "https://www.youtube.com/watch?v=Y-rmzh0PI3c",
+    trending: false, popular: true },
+
+  { id: 5, title: "Spring", genre: "Animation", year: 2019, duration: "8 min",
+    description: "A shepherd girl and her dog face ancient spirits as the seasons change.",
+    poster: "spring.jpg", trailer: "https://www.youtube.com/watch?v=WhWc3b3KhnY",
+    trending: true, popular: false },
+
+  { id: 6, title: "Tears of Steel", genre: "Sci-Fi", year: 2012, duration: "12 min",
+    description: "A group of fighters tries to save the future from a robot invasion.",
+    poster: "tears-of-steel.jpg", trailer: "https://www.youtube.com/watch?v=R6MlUcmOul8",
+    trending: true, popular: false },
+
+  { id: 7, title: "A Trip to the Moon", genre: "Sci-Fi", year: 1902, duration: "14 min",
+    description: "Explorers launch a capsule at the Moon in this pioneering silent classic.",
+    poster: "a-trip-to-the-moon.jpg", trailer: "",
+    trending: false, popular: true },
+
+  { id: 8, title: "Metropolis", genre: "Sci-Fi", year: 1927, duration: "2h 30m",
+    description: "In a towering future city, a worker's son crosses the divide between rich and poor.",
+    poster: "metropolis.jpg", trailer: "https://archive.org/details/metropolis-1927-english-titles",
+    trending: true, popular: false },
+
+  { id: 9, title: "Night of the Living Dead", genre: "Horror", year: 1968, duration: "1h 36m",
+    description: "Strangers barricade themselves in a farmhouse as the dead rise outside.",
+    poster: "night-of-the-living-dead.jpg", trailer: "https://archive.org/details/night_of_the_living_dead",
+    trending: true, popular: false },
+
+  { id: 10, title: "Nosferatu", genre: "Horror", year: 1922, duration: "1h 34m",
+    description: "A sinister count travels to a new town, bringing terror with him.",
+    poster: "nosferatu.jpg", trailer: "https://archive.org/details/nosferatu",
+    trending: false, popular: true },
+
+  { id: 11, title: "The Kid", genre: "Comedy", year: 1921, duration: "1h 8m",
+    description: "A kind-hearted tramp raises an abandoned child in this silent comedy.",
+    poster: "the-kid.jpg", trailer: "",
+    trending: false, popular: false },
+
+  { id: 12, title: "The General", genre: "Comedy", year: 1926, duration: "1h 18m",
+    description: "A railway engineer chases a stolen locomotive across enemy lines.",
+    poster: "the-general.jpg", trailer: "",
+    trending: false, popular: true }
+];

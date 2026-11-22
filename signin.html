@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamTV | Sign In</title>
+    <link rel="stylesheet" href="streamtv.css">
+</head>
+<body class="form-page">
+<main>
+    <div class="form-box">
+        <img src="STREAMTV.webp" alt="StreamTV logo: a black and yellow TV and remote">
+        <h2>Welcome Back</h2>
+        <h3>Sign in to keep watching.</h3>
+        <form>
+            <p class="demo-note"><strong>Demo only.</strong> No account is used. Please don't use a real password. Any email with a password of 8 or more characters will work.</p>
+
+            <div>
+                <label for="Email">Enter Email</label>
+                <input type="email" id="Email" placeholder="name@example.com" required class="form-control">
+            </div>
+
+            <div>
+                <label for="Password">Password</label>
+                <input type="password" id="Password" placeholder="Password" required minlength="8" class="form-control">
+            </div>
+
+            <div id="message" role="alert"></div>
+
+            <button type="submit" class="btn btn-warning btn-full">Sign in</button>
+            <hr>
+            <p>Don't have an account? <a href="index.html">Sign up</a></p>
+        </form>
+    </div>
+</main>
+<script src="signin.js"></script>
+</body>
+</html>
