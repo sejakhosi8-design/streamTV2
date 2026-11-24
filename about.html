@@ -93,7 +93,7 @@
 
             <form id="Contact_form">
                 <label for="contact_name">Your name</label>
-                <input type="text" class="form-control" id="contact_name" placeholder="Your name" required minlength="2">
+                <input type="text" class="form-control" id="contact_name" placeholder="Your name" required minlength="2" maxlength="20" pattern="[A-Za-z\u00C0-\u024F][A-Za-z\u00C0-\u024F '\-]*" title="Letters only, 2 to 20 characters. No digits.">
 
                 <label for="contact_email">Email</label>
                 <input type="email" class="form-control" id="contact_email" placeholder="name@example.com" required>
