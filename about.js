@@ -1,21 +1,28 @@
 /* CONTACT FORM */
 const contactForm = document.getElementById("Contact_form");
 const contactStatus = document.getElementById("Contact_status");
-
 const contactName = document.getElementById("contact_name");
-const CONTACT_NAME_PATTERN = /^[A-Za-z\u00C0-\u024F][A-Za-z\u00C0-\u024F '\-]*$/;
-contactName.addEventListener("input", function () {
-  contactName.value = contactName.value.replace(/[^A-Za-z\u00C0-\u024F '\-]/g, "").slice(0, 20);
+
+/* the name field does not accept numbers */
+blockBadNameCharacters(contactName, function () {
+  contactStatus.textContent = "Names can only contain letters, with no numbers.";
+  contactStatus.className = "status-error";
 });
 
 contactForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const name = document.getElementById("contact_name").value.trim();
+  const name = contactName.value.trim();
   const message = document.getElementById("contact_message").value.trim();
 
-  if (name.length < 2 || name.length > 20 || !CONTACT_NAME_PATTERN.test(name) || message.length < 10) {
-    contactStatus.textContent = "Please enter a name of 2 to 20 letters (no digits) and a message of at least 10 characters.";
+  if (!isValidName(name)) {
+    contactStatus.textContent = "Please enter your name using letters only (at least 2).";
+    contactStatus.className = "status-error";
+    return;
+  }
+
+  if (message.length < 10) {
+    contactStatus.textContent = "Please write a message of at least 10 characters.";
     contactStatus.className = "status-error";
     return;
   }

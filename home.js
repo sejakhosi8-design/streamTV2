@@ -1,17 +1,3 @@
-/* BUILD ONE CARD */
-function createCard(movie) {
-  const card = document.createElement("article");
-  card.className = "movie-card";
-  card.innerHTML = `
-    <img class="poster-img" src="${movie.poster}" alt="Poster for ${movie.title}">
-    <div class="movie-info">
-      <h3 class="movie-title">${movie.title}</h3>
-      <p class="movie-meta">${movie.genre} | ${movie.year} | ${movie.duration}</p>
-      ${listButtonHtml(movie.id)}
-    </div>`;
-  return card;
-}
-
 /* FILL ONE ROW WITH CARDS */
 function fillRow(rowId, list) {
   const row = document.getElementById(rowId);
@@ -21,31 +7,9 @@ function fillRow(rowId, list) {
   }
 }
 
-/* THE HERO'S WATCH NOW BUTTON PLAYS THE FEATURED FILM IN A POP-UP */
-const playerModalElement = document.getElementById("playerModal");
-const playerModal = new bootstrap.Modal(playerModalElement);
-const playerFrame = document.getElementById("playerFrame");
-
+/* THE HERO'S WATCH NOW BUTTON OPENS THE FEATURED FILM AND PLAYS IT */
 document.getElementById("heroWatchBtn").addEventListener("click", function () {
-  const id = Number(this.dataset.id);
-  const movie = movies.find(function (m) {
-    return m.id === id;
-  });
-  const embedUrl = movie ? getEmbedUrl(movie.trailer) : null;
-
-  if (!embedUrl) {
-    showToast("Sorry, this film has no video yet.");
-    return;
-  }
-
-  document.getElementById("playerTitle").textContent = movie.title;
-  playerFrame.src = embedUrl;
-  playerModal.show();
-});
-
-/* closing the pop-up stops the video */
-playerModalElement.addEventListener("hidden.bs.modal", function () {
-  playerFrame.src = "";
+  openDetails(Number(this.dataset.id), true);
 });
 
 /* LOAD THE DATA, THEN SHOW THE ROWS */

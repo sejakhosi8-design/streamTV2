@@ -299,6 +299,15 @@ main section {
   padding: 1.5rem 1.5rem 0;
 }
 
+/* every section except the hero shares the same centred width, so the page has even side spaces */
+main section:not(#Hero),
+main > .data-status {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 main section h2 {
   text-align: left;
   margin-bottom: 1rem;
@@ -311,8 +320,8 @@ main section h2 {
 
 /* HERO BANNER */
 #Hero {
-  min-height: 70vh;
-  padding: 4rem 1.5rem;
+  min-height: clamp(320px, 55vh, 560px);
+  padding: 3rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -337,28 +346,36 @@ main section h2 {
 #Trending-row,
 #New_releases-row,
 #Popular-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);   /* six equal columns, so no empty space at the end */
   gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-  scroll-snap-type: x proximity;
+}
+
+@media (max-width: 991px) {
+  #Trending-row,
+  #New_releases-row,
+  #Popular-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  #Trending-row,
+  #New_releases-row,
+  #Popular-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /*  ONE MOVIE CARD */
 .movie-card {
-  flex: 0 0 170px;
+  height: 100%;
+  cursor: pointer;                         /* the whole card is clickable */
   background: var(--card);
   border: 1px solid transparent;
   border-radius: 14px;
   overflow: hidden;
-  scroll-snap-align: start;
   transition: transform 0.2s, border-color 0.2s;
-}
-
-/* on Browse and My List the Bootstrap column sets the width */
-.row .movie-card {
-  flex: none;
-  height: 100%;
 }
 
 /* HOVER and FOCUS STATE */
@@ -478,7 +495,7 @@ details p {
 }
 
 #Contact_form {
-  max-width: 600px;
+  max-width: none;
 }
 
 .status-ok {
@@ -516,7 +533,7 @@ details p {
 
 /* FOOTER */
 footer {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding: 1.5rem;
   text-align: center;
   font-size: 0.85rem;
@@ -564,22 +581,22 @@ footer nav a {
     margin-bottom: 0.6rem;
   }
 
-  .movie-card {
-    flex-basis: 140px;
-  }
 }
 
 /* DATA STATUS LINE (Fetch API feedback)  */
 .data-status {
   margin: 0;
-  padding: 0.75rem 1.5rem 0;
-  min-height: 2rem;
-  font-size: 0.85rem;
+  padding: 0.6rem 1.5rem 0;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 
 .data-status.loading::before {
   content: "⏳ ";
+}
+
+.data-status:empty {
+  display: none;
 }
 
 .data-status.ok {
@@ -595,4 +612,58 @@ footer nav a {
   border: 0;
   border-radius: 12px;
   background: #000000;
+}
+
+/* BACK BUTTON (sign in and sign up pages) */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--yellow);
+  border-radius: 14px;
+  color: var(--yellow);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-btn:hover,
+.back-btn:focus-visible {
+  background: var(--yellow);
+  color: #000000;
+}
+
+/* ABOUT PAGE PANELS (they sit side by side and fill the full height of their row) */
+.about-panel {
+  height: 100%;
+  padding: 1.25rem;
+  background: #0e0e0e;
+  border: 1px solid rgba(255, 214, 10, 0.25);
+  border-radius: 16px;
+}
+
+.about-panel h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.about-panel p:last-child,
+.about-panel ol:last-child {
+  margin-bottom: 0;
+}
+
+.about-panel ol {
+  padding-left: 1.25rem;
+}
+
+.about-panel li {
+  margin-bottom: 0.6rem;
+}
+
+.about-panel details:last-child {
+  margin-bottom: 0;
+}
+
+.about-panel .table {
+  margin-bottom: 0.75rem;
 }

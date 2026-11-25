@@ -1,13 +1,12 @@
-/* ===== SIGN IN (demo only) ===== */
-const AUTH_KEY = "streamtvLoggedIn";
+/* SIGN IN (demo only) */
 
-try {
-  if (localStorage.getItem(AUTH_KEY) === "true") {
-    window.location.href = "home.html";
-  }
-} catch (error) {
-  /* storage blocked: stay on this page */
+/* already signed in? go back to the site */
+if (isLoggedIn()) {
+  window.location.href = getReturnPage();
 }
+
+/* the Back button returns to the page the visitor came from */
+document.getElementById("backBtn").href = getReturnPage();
 
 const form = document.querySelector("form");
 const message = document.getElementById("message");
@@ -23,14 +22,10 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  try {
-    localStorage.setItem(AUTH_KEY, "true");
-  } catch (error) {
-    /* storage blocked */
-  }
-  message.textContent = "Demo sign in successful. Taking you to StreamTV...";
+  logIn();
+  message.textContent = "Demo sign in successful. Taking you back to StreamTV...";
   message.className = "alert alert-success";
   setTimeout(function () {
-    window.location.href = "home.html";
+    window.location.href = getReturnPage();
   }, 1000);
 });

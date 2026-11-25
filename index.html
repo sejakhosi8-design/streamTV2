@@ -3,65 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreamTV | Sign Up</title>
+    <title>StreamTV | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="streamtv.css">
 </head>
-<body class="form-page">
-<main>
-<form>
-  <div class="form-box">
-    <img src="STREAMTV.webp" alt="StreamTV logo: a black and yellow TV and remote">
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="STREAMTV.webp" alt="StreamTV logo" height="32">
+                    <span>StreamTV</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="browse.html">Browse</a></li>
+                        <li class="nav-item"><a class="nav-link" href="mylist.html">My List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li id="signinItem" class="nav-item"><a class="btn btn-outline-warning ms-lg-2" href="signin.html">Sign in</a></li>
+                        <li id="logoutItem" class="nav-item" hidden><button type="button" id="logoutBtn" class="btn btn-outline-warning ms-lg-2">Log out</button></li>
+                    </ul>
+                    <form class="d-flex ms-lg-3" role="search">
+                        <label for="search_input" class="visually-hidden">Search</label>
+                        <input class="form-control me-2" type="search" id="search_input" placeholder="Search">
+                        <button class="btn btn-warning" type="submit" aria-label="search">
+                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                 <circle cx="11" cy="11" r="8"></circle>
+                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                             </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <h2>Register</h2>
-    <h3>Sign up now to unlock unlimited access.</h3>
+    <main>
+        <section id="Hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Tears of steel</h1>
+            <p>Sci-Fi/Action | 2012 | 12m</p>
+            <p>Set in a dystopian future, the short film features a group of warriors and scientists who gather at the Oude Kerk in Amsterdam in a desperate attempt to save the world from destructive robots.</p>
+            <div class="hero-buttons">
+                <a href="https://www.youtube.com/watch?v=R6MlUcmOul8" target="_blank" rel="noopener" class="btn btn-warning">Watch Trailer</a>
+                <button type="button" id="heroWatchBtn" class="btn btn-warning" data-id="6">▶ Watch Now</button>
+                <button type="button" id="heroListBtn" class="btn btn-outline-warning list-btn" data-id="6">+ My List</button>
+            </div>
+        </section>
 
-    <p class="demo-note"><strong>Demo only.</strong> No account is created. Please don't use a real password. Any details that pass the checks will let you in.</p>
+        <p id="Data_status" class="data-status" role="status" aria-live="polite"></p>
 
-    <div class="name-row">
-      <div>
-        <label for="Fname">First name</label>
-        <input type="text" id="Fname" placeholder="First name" required minlength="2" class="form-control">
-      </div>
-      <div>
-        <label for="Lname">Last name</label>
-        <input type="text" id="Lname" placeholder="Last name" required minlength="2" class="form-control">
-      </div>
-    </div>
+        <section id="Trending">
+            <h2>Trending</h2>
+            <div id="Trending-row"></div>
+        </section>
 
-    <div>
-      <label for="Mobilenumber">Mobile number</label>
-      <input type="tel" id="Mobilenumber" placeholder="+266 5000 0000" required pattern="[0-9+ ]{8,15}" class="form-control">
-    </div>
+        <section id="New_releases">
+            <h2>New Releases</h2>
+            <div id="New_releases-row"></div>
+        </section>
 
-    <div>
-      <label for="Email">Enter Email</label>
-      <input type="email" id="Email" placeholder="name@example.com" required class="form-control">
-    </div>
+        <section id="Popular">
+            <h2>Popular</h2>
+            <div id="Popular-row"></div>
+        </section>
 
-    <div>
-      <label for="Password">Create password</label>
-      <input type="password" id="Password" placeholder="Password" required minlength="8" class="form-control">
-    </div>
+    </main>
 
-    <div>
-      <label for="Confirm_password">Confirm password</label>
-      <input type="password" id="Confirm_password" placeholder="Confirm password" required minlength="8" class="form-control">
-    </div>
+    <footer>
+        <nav aria-label="Footer navigation">
+            <a href="about.html">About</a>
+            <a href="about.html#faq">Help</a>
+        </nav>
+        <p>&copy; 2026 StreamTV. A student project for Principles of Web Design. All rights reserved.</p>
+    </footer>
 
-    <div class="form-check">
-      <input type="checkbox" id="terms" class="form-check-input" required>
-      <label for="terms" class="form-check-label">I agree to the Terms &amp; Conditions</label>
-    </div>
-
-    <div id="message" role="alert"></div>
-
-    <button type="reset" class="btn btn-secondary">Reset</button>
-    <button type="submit" class="btn btn-warning">Done</button>
-    <hr>
-    <p>Already have an account? <a href="signin.html">Sign in</a></p>
-  </div>
-</form>
-</main>
-<script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="nav.js"></script>
+    <script src="movies.js"></script>
+    <script src="data.js"></script>
+    <script src="list.js"></script>
+    <script src="cards.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

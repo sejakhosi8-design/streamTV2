@@ -1,6 +1,4 @@
-/* LOAD THE CATALOGUE WITH THE FETCH API
-   Asks the server for movies.json, shows a status message, and falls back to the
-   built-in list in movies.js if the request fails (offline, file missing, bad JSON). */
+/* LOAD THE CATALOGUE WITH THE FETCH API */
 
 function showDataStatus(box, text, kind) {
   if (!box) return;
@@ -51,7 +49,7 @@ function getEmbedUrl(url) {
   return null;
 }
 
-/* the name of the site a video link points to, for the "Open on ..." button */
+/* the name of the site a video link points to */
 function getSourceName(url) {
   if (url.includes("archive.org")) return "Internet Archive";
   return "YouTube";

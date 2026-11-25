@@ -5,22 +5,6 @@ const emptyBox = document.getElementById("Mylist_empty");
 const message = document.getElementById("Mylist_message");
 const clearButton = document.getElementById("Clear_list");
 
-/* BUILD ONE SAVED CARD */
-function createListCard(movie) {
-  const col = document.createElement("div");
-  col.className = "col-6 col-md-4 col-lg-3";
-  col.innerHTML = `
-    <article class="movie-card">
-      <img class="poster-img" src="${movie.poster}" alt="Poster for ${movie.title}">
-      <div class="movie-info">
-        <h3 class="movie-title">${movie.title}</h3>
-        <p class="movie-meta">${movie.genre} | ${movie.year} | ${movie.duration}</p>
-        <button type="button" class="btn btn-outline-warning btn-sm remove-btn" data-id="${movie.id}">Remove</button>
-      </div>
-    </article>`;
-  return col;
-}
-
 /* SHOW THE SAVED TITLES */
 function showList() {
   const savedIds = getList();
@@ -30,7 +14,7 @@ function showList() {
 
   grid.innerHTML = "";
   for (const movie of savedMovies) {
-    grid.appendChild(createListCard(movie));
+    grid.appendChild(createCard(movie, { remove: true, column: true }));
   }
 
   if (savedMovies.length === 1) {
@@ -67,6 +51,9 @@ clearButton.addEventListener("click", function () {
     showList();
   }
 });
+
+/* if the list was changed inside the details pop-up, refresh the page when it closes */
+document.addEventListener("hidden.bs.modal", showList);
 
 /* load the catalogue with fetch, then show the saved titles */
 loadMovies().then(showList);

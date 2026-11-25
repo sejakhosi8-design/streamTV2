@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="guard.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreamTV | About and Help</title>
@@ -12,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
             <div class="container-fluid">
-                <a class="navbar-brand" href="home.html">
+                <a class="navbar-brand" href="index.html">
                     <img src="STREAMTV.webp" alt="StreamTV logo" height="32">
                     <span>StreamTV</span>
                 </a>
@@ -21,11 +20,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="browse.html">Browse</a></li>
                         <li class="nav-item"><a class="nav-link" href="mylist.html">My List</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="about.html">About</a></li>
-                        <li class="nav-item"><button type="button" id="logoutBtn" class="btn btn-outline-warning ms-lg-2">Log out</button></li>
+                        <li id="signinItem" class="nav-item"><a class="btn btn-outline-warning ms-lg-2" href="signin.html">Sign in</a></li>
+                        <li id="logoutItem" class="nav-item" hidden><button type="button" id="logoutBtn" class="btn btn-outline-warning ms-lg-2">Log out</button></li>
                     </ul>
                     <form class="d-flex ms-lg-3" role="search">
                         <label for="search_input" class="visually-hidden">Search</label>
@@ -33,8 +33,8 @@
                         <button class="btn btn-warning" type="submit" aria-label="search">
                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                  <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
+                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                             </svg>
                         </button>
                     </form>
                 </div>
@@ -45,98 +45,121 @@
     <main>
         <section id="About" aria-labelledby="about-title">
             <h1 id="about-title">About StreamTV</h1>
-            <p>StreamTV is a student-built streaming platform. It lets visitors explore a library of free films, read more about each title, watch trailers, and save favourites to their own list.</p>
+            <p>StreamTV is a student-built streaming platform. It lets visitors explore a library of free films, read more about each title, watch them, and save favourites to their own list.</p>
 
             <h2>Who is it for?</h2>
-            <ul>
-                <li>Students who want free, legal films to watch.</li>
-                <li>Film fans who like to browse by genre.</li>
-                <li>Anyone who wants a simple list of what to watch next.</li>
-            </ul>
-
-            <h2>How it works</h2>
-            <ol>
-                <li>Sign up or sign in (this is a demo, so no real account is made).</li>
-                <li>Browse the library and search or filter by genre.</li>
-                <li>Open a title to see its details and watch the trailer.</li>
-                <li>Add titles to My List. Your list is saved in this browser.</li>
-            </ol>
-        </section>
-
-        <section id="faq" aria-labelledby="faq-title">
-            <h2 id="faq-title">Frequently Asked Questions</h2>
-
-            <details>
-                <summary>What is StreamTV?</summary>
-                <p>StreamTV is a student project for Principles of Web Design. It is not a real streaming service.</p>
-            </details>
-
-            <details>
-                <summary>Is the sign up real?</summary>
-                <p>No. The sign up and sign in forms are demonstrations. No account is created and no password is stored.</p>
-            </details>
-
-            <details>
-                <summary>How do I add a title to My List?</summary>
-                <p>Open the Browse page and press + My List on any title.</p>
-            </details>
-
-            <details>
-                <summary>Why is my list empty on another device?</summary>
-                <p>My List is saved in your browser, so it does not follow you to other browsers or devices.</p>
-            </details>
-        </section>
-
-        <section id="Contact" aria-labelledby="contact-title">
-            <h2 id="contact-title">Contact and Help</h2>
-            <p>Have a question or a problem? Send us a message. This is a demonstration form and the message is not sent anywhere.</p>
-
-            <form id="Contact_form">
-                <label for="contact_name">Your name</label>
-                <input type="text" class="form-control" id="contact_name" placeholder="Your name" required minlength="2" maxlength="20" pattern="[A-Za-z\u00C0-\u024F][A-Za-z\u00C0-\u024F '\-]*" title="Letters only, 2 to 20 characters. No digits.">
-
-                <label for="contact_email">Email</label>
-                <input type="email" class="form-control" id="contact_email" placeholder="name@example.com" required>
-
-                <label for="contact_message">Message</label>
-                <textarea class="form-control" id="contact_message" rows="4" placeholder="How can we help?" required minlength="10"></textarea>
-
-                <button type="submit" class="btn btn-warning mt-3">Send message</button>
-                <button type="reset" class="btn btn-outline-warning mt-3">Clear</button>
-            </form>
-
-            <p id="Contact_status" role="status" aria-live="polite"></p>
-        </section>
-
-        <section id="Credits" aria-labelledby="credits-title">
-            <h2 id="credits-title">Credits and Attribution</h2>
-            <p>All films on StreamTV are open-licence or public-domain titles. Third-party content is credited below.</p>
-
-            <div class="table-responsive">
-                <table class="table table-dark">
-                    <thead>
-                        <tr><th>Title</th><th>Source</th><th>Licence</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Big Buck Bunny (2008)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
-                        <tr><td>Sintel (2010)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
-                        <tr><td>Elephants Dream (2006)</td><td>Blender Foundation</td><td>Creative Commons Attribution 2.5</td></tr>
-                        <tr><td>Cosmos Laundromat (2015)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
-                        <tr><td>Spring (2019)</td><td>Blender Studio</td><td>Creative Commons Attribution 4.0</td></tr>
-                        <tr><td>Tears of Steel (2012)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
-                        <tr><td>A Trip to the Moon (1902)</td><td>Internet Archive</td><td>Public domain</td></tr>
-                        <tr><td>Metropolis (1927)</td><td>Internet Archive</td><td>Public domain</td></tr>
-                        <tr><td>Night of the Living Dead (1968)</td><td>Internet Archive</td><td>Public domain</td></tr>
-                        <tr><td>Nosferatu (1922)</td><td>Internet Archive</td><td>Public domain</td></tr>
-                        <tr><td>The Kid (1921)</td><td>Internet Archive</td><td>Public domain</td></tr>
-                        <tr><td>The General (1926)</td><td>Internet Archive</td><td>Public domain</td></tr>
-                        <tr><td>Embedded videos</td><td>Official Blender YouTube channels (the six Blender films); Internet Archive (Metropolis, Night of the Living Dead, Nosferatu)</td><td>Same licence or public-domain status as each film</td></tr>
-                        <tr><td>Poster images and hero image</td><td>Wikimedia Commons / Blender Foundation</td><td>See each image's own page</td></tr>
-                    </tbody>
-                </table>
+            <div class="row g-3">
+                <div class="col-md-4"><div class="about-panel"><p>Students who want free, legal films to watch.</p></div></div>
+                <div class="col-md-4"><div class="about-panel"><p>Film fans who like to browse by genre.</p></div></div>
+                <div class="col-md-4"><div class="about-panel"><p>Anyone who wants a simple list of what to watch next.</p></div></div>
             </div>
+        </section>
 
-            <p>Bootstrap 5.3 is used under the MIT licence. The navbar is adapted from the Bootstrap documentation (getbootstrap.com).</p>
+        <section id="HowFaq" aria-label="How it works and frequently asked questions">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="about-panel">
+                        <h2 id="how-title">How it works</h2>
+                        <ol>
+                            <li>Explore the Home page for the featured film and the Trending, New Releases and Popular rows.</li>
+                            <li>Open Browse to search the library or filter it by genre.</li>
+                            <li>Click any film to see its details, then press Watch Now to play it.</li>
+                            <li>Add films to My List. Your list is saved in this browser.</li>
+                            <li>Sign in if you like. It is a demo, so no real account is made.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="faq">
+                    <div class="about-panel">
+                        <h2 id="faq-title">Frequently Asked Questions</h2>
+
+                        <details>
+                            <summary>What is StreamTV?</summary>
+                            <p>StreamTV is a student project for Principles of Web Design. It is not a real streaming service.</p>
+                        </details>
+
+                        <details>
+                            <summary>Do I have to sign in?</summary>
+                            <p>No. You can browse and watch without signing in. Signing in is a demonstration and only changes the Sign in button to Log out.</p>
+                        </details>
+
+                        <details>
+                            <summary>Is the sign up real?</summary>
+                            <p>No. The sign up and sign in forms are demonstrations. No account is created and no password is stored.</p>
+                        </details>
+
+                        <details>
+                            <summary>How do I add a title to My List?</summary>
+                            <p>Press + My List on any film, on any page, or open the film and press it there.</p>
+                        </details>
+
+                        <details>
+                            <summary>Why is my list empty on another device?</summary>
+                            <p>My List is saved in your browser, so it does not follow you to other browsers or devices.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ContactCredits" aria-label="Contact and credits">
+            <div class="row g-4">
+                <div class="col-lg-5" id="Contact">
+                    <div class="about-panel">
+                        <h2 id="contact-title">Contact and Help</h2>
+                        <p>Have a question or a problem? Send us a message. This is a demonstration form and the message is not sent anywhere.</p>
+
+                        <form id="Contact_form">
+                            <label for="contact_name">Your name</label>
+                            <input type="text" class="form-control" id="contact_name" placeholder="Your name" required minlength="2" pattern="[A-Za-z\u00C0-\u00FF' \-]{2,}" title="Letters only, no numbers" autocomplete="name">
+
+                            <label for="contact_email">Email</label>
+                            <input type="email" class="form-control" id="contact_email" placeholder="name@example.com" required>
+
+                            <label for="contact_message">Message</label>
+                            <textarea class="form-control" id="contact_message" rows="4" placeholder="How can we help?" required minlength="10"></textarea>
+
+                            <button type="submit" class="btn btn-warning mt-3">Send message</button>
+                            <button type="reset" class="btn btn-outline-warning mt-3">Clear</button>
+                        </form>
+
+                        <p id="Contact_status" role="status" aria-live="polite"></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" id="Credits">
+                    <div class="about-panel">
+                        <h2 id="credits-title">Credits and Attribution</h2>
+                        <p>All films on StreamTV are open-licence or public-domain titles. Third-party content is credited below.</p>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr><th>Title</th><th>Source</th><th>Licence</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Big Buck Bunny (2008)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
+                                    <tr><td>Sintel (2010)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
+                                    <tr><td>Elephants Dream (2006)</td><td>Blender Foundation</td><td>Creative Commons Attribution 2.5</td></tr>
+                                    <tr><td>Cosmos Laundromat (2015)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
+                                    <tr><td>Spring (2019)</td><td>Blender Studio</td><td>Creative Commons Attribution 4.0</td></tr>
+                                    <tr><td>Tears of Steel (2012)</td><td>Blender Foundation</td><td>Creative Commons Attribution 3.0</td></tr>
+                                    <tr><td>A Trip to the Moon (1902)</td><td>Internet Archive</td><td>Public domain</td></tr>
+                                    <tr><td>Metropolis (1927)</td><td>Internet Archive</td><td>Public domain</td></tr>
+                                    <tr><td>Night of the Living Dead (1968)</td><td>Internet Archive</td><td>Public domain</td></tr>
+                                    <tr><td>Nosferatu (1922)</td><td>Internet Archive</td><td>Public domain</td></tr>
+                                    <tr><td>The Kid (1921)</td><td>Internet Archive</td><td>Public domain</td></tr>
+                                    <tr><td>The General (1926)</td><td>Internet Archive</td><td>Public domain</td></tr>
+                                    <tr><td>Embedded videos</td><td>Official Blender YouTube channels (the six Blender films); Internet Archive (Metropolis, Night of the Living Dead, Nosferatu)</td><td>Same licence or public-domain status as each film</td></tr>
+                                    <tr><td>Poster images and hero image</td><td>Wikimedia Commons / Blender Foundation</td><td>See each image's own page</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p>Bootstrap 5.3 is used under the MIT licence. The navbar is adapted from the Bootstrap documentation (getbootstrap.com).</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -149,6 +172,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="nav.js"></script>
+    <script src="validate.js"></script>
     <script src="about.js"></script>
 </body>
 </html>

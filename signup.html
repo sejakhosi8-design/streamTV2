@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamTV | Sign Up</title>
+    <link rel="stylesheet" href="streamtv.css">
+</head>
+<body class="form-page">
+<main>
+<form>
+  <div class="form-box">
+    <a href="index.html" id="backBtn" class="back-btn">&larr; Back</a>
+    <img src="STREAMTV.webp" alt="StreamTV logo: a black and yellow TV and remote">
+
+    <h2>Register</h2>
+    <h3>Sign up now to unlock unlimited access.</h3>
+
+    <p class="demo-note"><strong>Demo only.</strong> No account is created. Please don't use a real password. Any details that pass the checks will let you in.</p>
+
+    <div class="name-row">
+      <div>
+        <label for="Fname">First name</label>
+        <input type="text" id="Fname" placeholder="First name" required minlength="2" pattern="[A-Za-zÀ-ÿ' \-]{2,}" title="Letters only, no numbers" autocomplete="given-name" class="form-control">
+      </div>
+      <div>
+        <label for="Lname">Last name</label>
+        <input type="text" id="Lname" placeholder="Last name" required minlength="2" pattern="[A-Za-zÀ-ÿ' \-]{2,}" title="Letters only, no numbers" autocomplete="family-name" class="form-control">
+      </div>
+    </div>
+
+    <div>
+      <label for="Mobilenumber">Mobile number</label>
+      <input type="tel" id="Mobilenumber" placeholder="+266 5000 0000" required pattern="[0-9+ ]{8,15}" class="form-control">
+    </div>
+
+    <div>
+      <label for="Email">Enter Email</label>
+      <input type="email" id="Email" placeholder="name@example.com" required class="form-control">
+    </div>
+
+    <div>
+      <label for="Password">Create password</label>
+      <input type="password" id="Password" placeholder="Password" required minlength="8" class="form-control">
+    </div>
+
+    <div>
+      <label for="Confirm_password">Confirm password</label>
+      <input type="password" id="Confirm_password" placeholder="Confirm password" required minlength="8" class="form-control">
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" id="terms" class="form-check-input" required>
+      <label for="terms" class="form-check-label">I agree to the Terms &amp; Conditions</label>
+    </div>
+
+    <div id="message" role="alert"></div>
+
+    <button type="reset" class="btn btn-secondary">Reset</button>
+    <button type="submit" class="btn btn-warning">Done</button>
+    <hr>
+    <p>Already have an account? <a href="signin.html">Sign in</a></p>
+  </div>
+</form>
+</main>
+<script src="nav.js"></script>
+<script src="validate.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

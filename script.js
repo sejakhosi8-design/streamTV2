@@ -1,73 +1,43 @@
-/* SIGN UP (demo only) */
-const AUTH_KEY = "streamtvLoggedIn";
+/* SIGN UP */
 
-/* already signed in? go straight to the site */
-try {
-  if (localStorage.getItem(AUTH_KEY) === "true") {
-    window.location.href = "home.html";
-  }
-} catch (error) {
-  /* storage blocked: stay on this page */
+/* already signed in? go back to the site */
+if (isLoggedIn()) {
+  window.location.href = getReturnPage();
 }
+
+/* the Back button returns to the page the visitor came from */
+document.getElementById("backBtn").href = getReturnPage();
 
 const form = document.querySelector("form");
 const message = document.getElementById("message");
+const firstName = document.getElementById("Fname");
+const lastName = document.getElementById("Lname");
 
-/* VALIDATION */
-const NAME_PATTERN = /^[A-Za-z\u00C0-\u024F][A-Za-z\u00C0-\u024F '\-]*$/;
-const NAME_MAX = 20;
-const fname = document.getElementById("Fname");
-const lname = document.getElementById("Lname");
-const mobile = document.getElementById("Mobilenumber");
+const NAME_WARNING = "Names can only contain letters, with no numbers.";
 
-/* live filtering: digits/symbols cannot be typed or pasted into names */
-function cleanName(input) {
-  input.value = input.value.replace(/[^A-Za-z\u00C0-\u024F '\-]/g, "").slice(0, NAME_MAX);
-}
-/* live filtering: only digits (integers) in the mobile number */
-function cleanMobile(input) {
-  input.value = input.value.replace(/\D/g, "").slice(0, 15);
-}
-fname.addEventListener("input", function () { cleanName(fname); });
-lname.addEventListener("input", function () { cleanName(lname); });
-mobile.addEventListener("input", function () { cleanMobile(mobile); });
-/* also block non-digit keys before they appear */
-mobile.addEventListener("keypress", function (event) {
-  if (event.key.length === 1 && !/[0-9]/.test(event.key)) event.preventDefault();
-});
-fname.addEventListener("keypress", function (event) {
-  if (/[0-9]/.test(event.key)) event.preventDefault();
-});
-lname.addEventListener("keypress", function (event) {
-  if (/[0-9]/.test(event.key)) event.preventDefault();
-});
-
-function showError(text) {
-  message.textContent = text;
+function warnAboutNumbers() {
+  message.textContent = NAME_WARNING;
   message.className = "alert alert-danger";
+  setTimeout(function () {
+    if (message.textContent === NAME_WARNING) {
+      message.textContent = "";
+      message.className = "";
+    }
+  }, 3000);
 }
+
+blockBadNameCharacters(firstName, warnAboutNumbers);
+blockBadNameCharacters(lastName, warnAboutNumbers);
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  const first = fname.value.trim();
-  const last = lname.value.trim();
-  const phone = mobile.value;
 
-  if (first.length < 2 || first.length > NAME_MAX || !NAME_PATTERN.test(first)) {
-    showError("First name must be 2 to 20 letters, with no digits.");
-    fname.focus();
+  if (!isValidName(firstName.value) || !isValidName(lastName.value)) {
+    message.textContent = "Please enter a first and last name using letters only (at least 2).";
+    message.className = "alert alert-danger";
     return;
   }
-  if (last.length < 2 || last.length > NAME_MAX || !NAME_PATTERN.test(last)) {
-    showError("Last name must be 2 to 20 letters, with no digits.");
-    lname.focus();
-    return;
-  }
-  if (!/^[0-9]{8,15}$/.test(phone)) {
-    showError("Mobile number must be digits only (0-9), 8 to 15 numbers long.");
-    mobile.focus();
-    return;
-  }
+
   const pass = document.getElementById("Password").value;
   const confirm = document.getElementById("Confirm_password").value;
 
@@ -77,14 +47,10 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  try {
-    localStorage.setItem(AUTH_KEY, "true");
-  } catch (error) {
-    /* storage blocked */
-  }
-  message.textContent = "Demo sign up successful. Taking you to StreamTV...";
+  logIn();
+  message.textContent = "Demo sign up successful. Taking you back to StreamTV...";
   message.className = "alert alert-success";
   setTimeout(function () {
-    window.location.href = "home.html";
+    window.location.href = getReturnPage();
   }, 1000);
 });

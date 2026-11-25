@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="guard.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreamTV | Browse</title>
@@ -12,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
             <div class="container-fluid">
-                <a class="navbar-brand" href="home.html">
+                <a class="navbar-brand" href="index.html">
                     <img src="STREAMTV.webp" alt="StreamTV logo" height="32">
                     <span>StreamTV</span>
                 </a>
@@ -21,18 +20,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="browse.html">Browse</a></li>
                         <li class="nav-item"><a class="nav-link" href="mylist.html">My List</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><button type="button" id="logoutBtn" class="btn btn-outline-warning ms-lg-2">Log out</button></li>
+                        <li id="signinItem" class="nav-item"><a class="btn btn-outline-warning ms-lg-2" href="signin.html">Sign in</a></li>
+                        <li id="logoutItem" class="nav-item" hidden><button type="button" id="logoutBtn" class="btn btn-outline-warning ms-lg-2">Log out</button></li>
                     </ul>
                     <form class="d-flex ms-lg-3" role="search">
                         <label for="search_input" class="visually-hidden">Search</label>
                         <input class="form-control me-2" type="search" id="search_input" placeholder="Search">
                         <button class="btn btn-warning" type="submit" aria-label="search">
                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
+                                 <circle cx="11" cy="11" r="8"></circle>
                                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                              </svg>
                         </button>
@@ -75,36 +75,6 @@
             <p id="No_results" hidden>No titles match your search.</p>
         </section>
 
-        <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="detailsTitle"></h2>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="trailerBox" class="ratio ratio-16x9 mb-3" hidden>
-                            <iframe id="trailerFrame" title="Video player" src="" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <img id="detailsPoster" class="img-fluid rounded" src="" alt="">
-                            </div>
-                            <div class="col-md-8">
-                                <p id="detailsMeta"></p>
-                                <p id="detailsDescription"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="detailsListBtn" class="btn list-btn btn-outline-warning" data-id="">+ My List</button>
-                        <button type="button" id="detailsWatch" class="btn btn-warning" data-url="" hidden>▶ Watch Now</button>
-                        <a id="detailsTrailer" class="btn btn-outline-warning" href="#" target="_blank" rel="noopener" hidden>Open on YouTube</a>
-                        <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
     <footer>
@@ -116,9 +86,11 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="nav.js"></script>
     <script src="movies.js"></script>
     <script src="data.js"></script>
     <script src="list.js"></script>
+    <script src="cards.js"></script>
     <script src="browse.js"></script>
 </body>
 </html>

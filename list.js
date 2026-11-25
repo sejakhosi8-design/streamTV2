@@ -1,6 +1,4 @@
-/* ===== MY LIST STORAGE =====
-   The list is saved in localStorage as an array of movie ids,
-   so it is still there after you refresh the page. */
+/* MY LIST STORAGE */
 const LIST_KEY = "streamtvMyList";
 
 function getList() {
